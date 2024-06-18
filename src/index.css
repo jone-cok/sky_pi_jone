@@ -28,7 +28,7 @@ img {
 
 .container {
 	max-width: 1200px;
-	margin: 0 auto;
+	margin:auto;
 	padding: 0 20px;
 }
 
@@ -92,39 +92,50 @@ nav .nav-items {
 }
 
 .banner-container {
-	padding: 100px 0;
+	padding: 0px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	gap: 20px;
+	margin:20px;
+
 }
 
 .banner {
 	font-family: 'Lovers Quarrel', cursive;
 	font-size: 100px;
-	background: #fff;
-	padding: 0 20px;
-	width: 100%;
-	height: 50vh;
-	margin-top: 20px;
+	background: #e2dfdf;
+	padding: 25px 20px;
+	width: 650px;
+	height: 1000px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	margin: 70px 5px;
 	flex-direction: column;
+	border-radius: 10px;
 }
 
 .banner-container .btn {
 	font-family: 'Poppins', sans-serif;
 	background: #00a8ff;
 	color: #fff;
-	padding: 10px 20px;
+	padding: 0px 20px;
 	border-radius: 5px;
 	font-size: 18px;
 	font-weight: 600;
 	cursor: pointer;
 }
 
+.bannerhome{
+	margin: 0px 110px 0px;
+}
+.bannerimageprofile{
+	background: #a59f9f;
+	width: 100%;
+	height: 350px;
+	border-radius: 15px;
+
+}
 .banner-container .btn:hover {
 	background: #0097e6;
 }

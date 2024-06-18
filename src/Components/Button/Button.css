@@ -1,0 +1,9 @@
+.Button {
+
+    color: white;
+    background-color: blue;
+    width: 230px;
+    height: 35px;
+    padding: auto;
+    text-align: center;
+  }
