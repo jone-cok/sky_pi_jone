@@ -58,6 +58,7 @@ const LoginSignup = () => {
                     width: "100%",
                     backgroundImage:
                       "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                    marginTop: "10px",
                   }}
                 >
                   Sign Up
@@ -79,7 +80,6 @@ const LoginSignup = () => {
                 </Button>
               </Link>
             </div>
-            <p className="label-start">Please bookmark this page!</p>
           </div>
         </div>
       </div>

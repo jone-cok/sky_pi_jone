@@ -57,7 +57,7 @@ const SignUp = () => {
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
-            <div style={{ padding: "0 0 1% 60%" }}>
+            <div style={{ padding: "0 0 4% 60%" }}>
               <Link to="/resources">
                 <div className="login-style">
                   <div style={{ color: "black", fontSize: "30px" }}>
