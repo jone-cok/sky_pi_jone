@@ -10,7 +10,6 @@ import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 import skypi from "../assets/skypi.jpg";
 const LoginSignup = () => {
-  const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const { slug } = useParams();
   // const urlll= URL.createObjectURL("../assets/skypi.jpg")
@@ -34,8 +33,6 @@ const LoginSignup = () => {
 			}
 		 `
       );
-
-      setProduct(cocktail);
     };
 
     fetchProduct();
@@ -77,6 +74,7 @@ const LoginSignup = () => {
             <div className="grid-story">
               <Link to="/login">
                 <Button
+                  onclick="setEmail()"
                   variant="contained"
                   className="ButtonStyle"
                   style={{

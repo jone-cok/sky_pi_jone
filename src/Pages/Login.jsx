@@ -9,10 +9,19 @@ import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 
 const Login = () => {
-  const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const { slug } = useParams();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [password2, setPassword2] = useState();
 
+  const checking = () => {
+    if (email.length === 0 || password.length === 0 || password2.length === 0) {
+      alert("Please fill in all fields and try again.");
+      return;
+    } else {
+    }
+  };
   useEffect(() => {
     const fetchProduct = async () => {
       const { cocktail } = await request(
@@ -33,8 +42,6 @@ const Login = () => {
 			}
 		 `
       );
-
-      setProduct(cocktail);
     };
 
     fetchProduct();
@@ -58,16 +65,31 @@ const Login = () => {
             <input
               type="email"
               className="TextAreaCustom"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <input
               type="password"
               className="TextAreaCustom"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <input
               type="password"
               className="TextAreaCustom"
+              placeholder="Re-enter password"
+              value={password2}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <div className="grid-story">
@@ -75,6 +97,7 @@ const Login = () => {
                 <Button
                   variant="contained"
                   className="ButtonStyle"
+                  onClick={checking()}
                   style={{
                     width: "100%",
                     backgroundImage:
