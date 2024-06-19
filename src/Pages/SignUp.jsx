@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { request } from "graphql-request";
-
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -20,10 +19,11 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const [file, setFile] = useState();
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -63,11 +63,38 @@ const SignUp = () => {
                   <div style={{ color: "black", fontSize: "30px" }}>
                     Resources
                   </div>
+                  <div style={{ height: "18px" }}></div>
                 </div>
               </Link>
             </div>
             <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
-            <div className="avatar-container"></div>
+            <div className="avatar-container" style={{ position: "relative" }}>
+              <div>
+                <button className="CustomizeButtonStyle">+</button>
+                <input
+                  type="file"
+                  onChange={handleChange}
+                  style={{
+                    opacity: "0",
+                    position: "absolute",
+                    top: "-28px",
+                    right: "-18px",
+                    width: "50px",
+                    height: "50px",
+                  }}
+                />
+                <img
+                  src={file}
+                  style={{
+                    height: "300px",
+                    maxWidth: "350px",
+                    minWidth: "260px",
+                    width: "100%",
+                  }}
+                  accept="image/*"
+                />
+              </div>
+            </div>
 
             <input
               type="email"
@@ -100,21 +127,34 @@ const SignUp = () => {
                   className="ButtonStyle"
                   style={{
                     width: "100%",
-                    background: "white",
                     color: "black",
+                    fontSize: "12px",
+                    background: "#d7d7d7",
                   }}
                 >
-                  Pick what phrase most
+                  Pick what phrase most identifies with you
                 </Button>
               </Link>
             </div>
             <div className="grid-container-signup">
               <div className="grid-item">
-                <Button variant="contained">+</Button>
+                <Button
+                  variant="contained"
+                  style={{ background: "#d7d7d7", color: "black" }}
+                >
+                  +
+                </Button>
               </div>
               <div></div>
               <div className="grid-item">
-                <Button variant="contained" style={{ width: "100%" }}>
+                <Button
+                  variant="contained"
+                  style={{
+                    width: "100%",
+                    background: " #d7d7d7",
+                    color: "black",
+                  }}
+                >
                   pick your wish list items
                 </Button>
               </div>
@@ -132,7 +172,6 @@ const SignUp = () => {
                 Save
               </Button>
             </div>
-            <p className="label-start">Please bookmark this page!</p>
           </div>
         </div>
       </div>

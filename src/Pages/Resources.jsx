@@ -45,14 +45,30 @@ const Login = () => {
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
+            <div style={{ padding: "0 60% 4%  0", float: "left" }}>
+              <div className="login-style">
+                <button
+                  onClick={() => navigate(-1)}
+                  style={{
+                    color: "black",
+                    fontSize: "30px",
+                    border: "none",
+                    backgroundColor: "#ebebeb",
+                  }}
+                >
+                  Back
+                </button>
+
+                <div style={{ height: "18px" }}></div>
+              </div>
+            </div>
             <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
             <p
               className="label-start"
               style={{ fontSize: "35px", fontFamily: "cursive" }}
             >
-              Log In
+              Resources
             </p>
-
             <div className="grid-story">
               <Link to="/qrcode">
                 <Button
@@ -60,8 +76,8 @@ const Login = () => {
                   className="ButtonStyle"
                   style={{
                     width: "100%",
-                    backgroundImage:
-                      "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                    background: "#d7d7d7",
+                    color: "black",
                   }}
                 >
                   QR Codes
@@ -75,8 +91,8 @@ const Login = () => {
                   className="ButtonStyle"
                   style={{
                     width: "100%",
-                    backgroundImage:
-                      "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                    background: "#d7d7d7",
+                    color: "black",
                   }}
                 >
                   Public View
@@ -90,8 +106,8 @@ const Login = () => {
                   className="ButtonStyle"
                   style={{
                     width: "100%",
-                    backgroundImage:
-                      "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                    background: "#d7d7d7",
+                    color: "black",
                   }}
                 >
                   Change Password
@@ -105,8 +121,8 @@ const Login = () => {
                   className="ButtonStyle"
                   style={{
                     width: "100%",
-                    backgroundImage:
-                      "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                    background: "#d7d7d7",
+                    color: "black",
                   }}
                 >
                   Find a Shelter

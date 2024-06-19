@@ -45,6 +45,8 @@ const Login = () => {
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
+            <div className="login-style" style={{ height: "75px" }}></div>
+
             <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
             <p
               className="label-start"
