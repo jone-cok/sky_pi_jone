@@ -8,51 +8,36 @@ import "../Styles/Button.css";
 import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 
-const Login = () => {
+const WishList = () => {
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const { slug } = useParams();
+
   return (
     <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
-            <div style={{ padding: "0 60% 4%  0", float: "left" }}>
-              <div className="login-style">
-                <button
-                  onClick={() => navigate(-1)}
-                  style={{
-                    color: "black",
-                    fontSize: "30px",
-                    border: "none",
-                    backgroundColor: "#ebebeb",
-                  }}
-                >
-                  Back
-                </button>
+            <div className="login-style" style={{ height: "75px" }}></div>
 
-                <div style={{ height: "18px" }}></div>
-              </div>
-            </div>
             <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
             <p
               className="label-start"
               style={{ fontSize: "35px", fontFamily: "cursive" }}
             >
-              Resources
+              Follow the story
             </p>
+
             <div className="grid-story">
-              <Link to="/qrcode">
+              <Link to="/">
                 <Button
                   variant="contained"
-                  className="ButtonStyle"
+                  className="ButtonStyleNormal"
                   style={{
                     width: "100%",
-                    background: "#d7d7d7",
-                    color: "black",
                   }}
                 >
-                  QR Codes
+                  WishList 1
                 </Button>
               </Link>
             </div>
@@ -60,44 +45,51 @@ const Login = () => {
               <Link to="/">
                 <Button
                   variant="contained"
-                  className="ButtonStyle"
+                  className="ButtonStyleNormal"
                   style={{
                     width: "100%",
-                    background: "#d7d7d7",
-                    color: "black",
                   }}
                 >
-                  Public View
+                  WishList 2
                 </Button>
               </Link>
             </div>
             <div className="grid-story">
-              <Link to="/login">
+              <Link to="/">
                 <Button
                   variant="contained"
-                  className="ButtonStyle"
+                  className="ButtonStyleNormal"
                   style={{
                     width: "100%",
-                    background: "#d7d7d7",
-                    color: "black",
                   }}
                 >
-                  Change Password
+                  WishList 3
                 </Button>
               </Link>
             </div>
             <div className="grid-story">
-              <Link to="/findshelter">
+              <Link to="/">
                 <Button
                   variant="contained"
-                  className="ButtonStyle"
+                  className="ButtonStyleNormal"
                   style={{
                     width: "100%",
-                    background: "#d7d7d7",
-                    color: "black",
                   }}
                 >
-                  Find a Shelter
+                  WishList 4
+                </Button>
+              </Link>
+            </div>
+            <div className="grid-story">
+              <Link to="/">
+                <Button
+                  variant="contained"
+                  className="ButtonStyleNormal"
+                  style={{
+                    width: "100%",
+                  }}
+                >
+                  WishList 5
                 </Button>
               </Link>
             </div>
@@ -108,4 +100,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default WishList;

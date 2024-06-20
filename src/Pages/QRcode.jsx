@@ -1,21 +1,36 @@
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
+import Qrcode from "react-qr-code";
 
 import Button from "@mui/material/Button";
 import "../Styles/Button.css";
 import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 
-const Qrcode = () => {
+const Qrcodes = () => {
   const navigate = useNavigate();
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
-            <button className="btn" onClick={() => navigate(-1)}>
-              Back
-            </button>
+            <div style={{ padding: "0 60% 4%  0", float: "left" }}>
+              <div className="login-style">
+                <button
+                  onClick={() => navigate(-1)}
+                  style={{
+                    color: "black",
+                    fontSize: "30px",
+                    border: "none",
+                    backgroundColor: "#ebebeb",
+                  }}
+                >
+                  Back
+                </button>
+
+                <div style={{ height: "18px" }}></div>
+              </div>
+            </div>
             <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
             <div
               className="label"
@@ -23,7 +38,12 @@ const Qrcode = () => {
             >
               QR code
             </div>
-            <div className="avatar-container"></div>
+            <div className="avatar-container">
+              <Qrcode
+                value={"adsga"}
+                style={{ width: "100%", height: "100%" }}
+              ></Qrcode>
+            </div>
 
             <div className="label" style={{ textAlign: "center" }}>
               "Im Diabetic"
@@ -35,7 +55,7 @@ const Qrcode = () => {
                 className="ButtonStyle"
                 style={{
                   width: "100%",
-                  background: "antiquewhite",
+                  backgroundColor: "#ebebeb",
                   color: "black",
                 }}
               >
@@ -49,4 +69,4 @@ const Qrcode = () => {
   );
 };
 
-export default Qrcode;
+export default Qrcodes;

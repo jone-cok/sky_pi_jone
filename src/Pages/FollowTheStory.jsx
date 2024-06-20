@@ -41,7 +41,7 @@ const Login = () => {
   }, [slug]);
 
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">

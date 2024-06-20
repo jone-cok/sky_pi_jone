@@ -1,175 +1,91 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { request } from "graphql-request";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
+import { request } from "graphql-request";
+import Button from "@mui/material/Button";
 import "../Styles/Button.css";
 import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 
 const SignUp = () => {
-  const [product, setProduct] = useState([]);
   const navigate = useNavigate();
-  const { slug } = useParams();
-  const [age, setAge] = React.useState("");
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { cocktail } = await request(
-        "https://api-us-east-1.graphcms.com/v2/cl4ji8xe34tjp01yrexjifxnw/master",
-        `
-			{ 
-				cocktail(where: {slug: "${slug}"}) {
-					category
-					info
-					ingredients
-					instructions
-					image {
-						url
-					 }
-					name
-					
-				 }
-			}
-		 `
-      );
-
-      setProduct(cocktail);
-    };
-
-    fetchProduct();
-  }, [slug]);
+  const handleChange = (e) => {
+    fetch("http://localhost:8000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data.message);
+          if (data.status === 200) {
+            navigate("/login"); //====================== ??????====================//
+          } else {
+            alert(data.message);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
-            <div style={{ padding: "0 0 4% 60%" }}>
-              <Link to="/resources">
-                <div className="login-style">
-                  <div style={{ color: "black", fontSize: "30px" }}>
-                    Resources
-                  </div>
-                  <div style={{ height: "18px" }}></div>
-                </div>
-              </Link>
-            </div>
-            <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
-            <div className="avatar-container" style={{ position: "relative" }}>
-              <div>
-                <button className="CustomizeButtonStyle">+</button>
-                <input
-                  type="file"
-                  onChange={handleChange}
-                  style={{
-                    opacity: "0",
-                    position: "absolute",
-                    top: "-28px",
-                    right: "-18px",
-                    width: "50px",
-                    height: "50px",
-                  }}
-                />
-                <img
-                  src={file}
-                  style={{
-                    height: "300px",
-                    maxWidth: "350px",
-                    minWidth: "260px",
-                    width: "100%",
-                  }}
-                  accept="image/*"
-                />
-              </div>
-            </div>
+            <div className="login-style" style={{ height: "75px" }}></div>
 
+            <h5 style={{ textAlign: "center", fontSize: "100px" }}>Help me</h5>
+            <p
+              className="label-start"
+              style={{ fontSize: "35px", fontFamily: "cursive" }}
+            >
+              SignUp
+            </p>
+            <p className="label-start">Type email and password!</p>
             <input
               type="email"
               className="TextAreaCustom"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
-              placeholder="Full name"
             ></input>
             <input
               type="password"
               className="TextAreaCustom"
-              style={{ height: "50px", marginTop: "20px" }}
-              placeholder="Type cash tag"
-            ></input>
-
-            <textarea
-              className="TextAreaCustom"
-              style={{
-                minHeight: "120px",
-                maxHeight: "120px",
-                minWidth: "100%",
-                maxWidth: "100%",
+              placeholder="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
               }}
-              placeholder="Write Your Story Here..."
-            ></textarea>
-
-            <div className="grid-story-signup">
-              <Link to="/qrcode">
-                <Button
-                  variant="contained"
-                  className="ButtonStyle"
-                  style={{
-                    width: "100%",
-                    color: "black",
-                    fontSize: "12px",
-                    background: "#d7d7d7",
-                  }}
-                >
-                  Pick what phrase most identifies with you
-                </Button>
-              </Link>
-            </div>
-            <div className="grid-container-signup">
-              <div className="grid-item">
-                <Button
-                  variant="contained"
-                  style={{ background: "#d7d7d7", color: "black" }}
-                >
-                  +
-                </Button>
-              </div>
-              <div></div>
-              <div className="grid-item">
-                <Button
-                  variant="contained"
-                  style={{
-                    width: "100%",
-                    background: " #d7d7d7",
-                    color: "black",
-                  }}
-                >
-                  pick your wish list items
-                </Button>
-              </div>
-            </div>
-            <div className="grid-story-signup">
+              style={{ height: "50px", marginTop: "20px" }}
+            ></input>
+            <div className="grid-story">
               <Button
                 variant="contained"
                 className="ButtonStyle"
+                onClick={handleChange()}
                 style={{
                   width: "100%",
                   backgroundImage:
-                    "linear-gradient(#EBEBEB 0%, #990404 50%, red 90%)",
+                    "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
                 }}
               >
-                Save
+                Continue
               </Button>
             </div>
           </div>

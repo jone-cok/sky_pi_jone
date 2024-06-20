@@ -6,7 +6,7 @@ import "../Styles/Label.css";
 
 const Home = () => {
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div style={{ padding: "0 0 1% 60%" }}>
@@ -49,16 +49,18 @@ const Home = () => {
               </div>
               <div></div>
               <div className="grid-item">
-                <Button
-                  variant="contained"
-                  className="ButtonStyle"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(#615F5F 10%, #615F5F 50%, #2b2a2a 90%)",
-                  }}
-                >
-                  Contained
-                </Button>
+                <Link to="/followthestory">
+                  <Button
+                    variant="contained"
+                    className="ButtonStyle"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(#615F5F 10%, #615F5F 50%, #2b2a2a 90%)",
+                    }}
+                  >
+                    WishList
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="grid-story">

@@ -9,39 +9,47 @@ import "../Styles/TextAreaCustom.css";
 import "../Styles/Label.css";
 
 const Login = () => {
-  const [product, setProduct] = useState([]);
+  const [shelter, setShelter] = useState();
+
+  const [email, setEmail] = useState();
+
+  const [password, setPassword] = useState();
+
+  const [password2, setPassword2] = useState();
+
   const navigate = useNavigate();
   const { slug } = useParams();
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { cocktail } = await request(
-        "https://api-us-east-1.graphcms.com/v2/cl4ji8xe34tjp01yrexjifxnw/master",
-        `
-			{ 
-				cocktail(where: {slug: "${slug}"}) {
-					category
-					info
-					ingredients
-					instructions
-					image {
-						url
-					 }
-					name
-					
-				 }
-			}
-		 `
-      );
-
-      setProduct(cocktail);
-    };
-
-    fetchProduct();
-  }, [slug]);
+  const handleChange = (e) => {
+    fetch("http://localhost:8000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        shelter,
+        email,
+        password,
+        password2,
+      }),
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data.message);
+          if (data.status === 200) {
+            navigate("/login"); //====================== ??????====================//
+          } else {
+            alert(data.message);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container">
       <div className="banner-container">
         <div className="banner">
           <div className="first-container">
@@ -56,34 +64,58 @@ const Login = () => {
             </p>
             <p className="label-start">Creat email and password!</p>
             <input
+              type="text"
+              className="TextAreaCustom"
+              placeholder="Address of shelter"
+              value={shelter}
+              onChange={(e) => {
+                setShelter(e.target.value);
+              }}
+              style={{ height: "50px", marginTop: "20px" }}
+            ></input>
+            <input
               type="email"
               className="TextAreaCustom"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <input
               type="password"
               className="TextAreaCustom"
+              placeholder="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <input
               type="password"
               className="TextAreaCustom"
+              placeholder="Retype password"
+              value={password2}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+              }}
               style={{ height: "50px", marginTop: "20px" }}
             ></input>
             <div className="grid-story">
-              <Link to="/loginsignup">
-                <Button
-                  variant="contained"
-                  className="ButtonStyle"
-                  style={{
-                    width: "100%",
-                    backgroundImage:
-                      "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
-                  }}
-                >
-                  Continue
-                </Button>
-              </Link>
+              <Button
+                variant="contained"
+                className="ButtonStyle"
+                onClick={handleChange()}
+                style={{
+                  width: "100%",
+                  backgroundImage:
+                    "linear-gradient(#879DC7 10%, #194DB2 50%, #194DB2 79%)",
+                }}
+              >
+                Continue
+              </Button>
             </div>
           </div>
         </div>
